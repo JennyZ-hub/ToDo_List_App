@@ -44,7 +44,6 @@ function TaskAdding({ tasks, setTasks }) {
 }
 
 function Task({ tasks, setTasks, task }) {
-  //const [bgColor, setBgColor] = useState('bg-red-200');
   function handleComplete(task) {
     const id = task.id;
     const updatedTasks = tasks.map((task) =>
@@ -52,12 +51,11 @@ function Task({ tasks, setTasks, task }) {
     );
     console.log(updatedTasks);
     setTasks(updatedTasks);
-    //setBgColor('bg-green-200');
   }
   const bgColor =
     task.taskStatus === 'Complete' ? 'bg-green-200' : 'bg-red-200';
   return (
-    <li className={`flex justify-between pb-[12px] ${bgColor}`}>
+    <li className={`flex h-48px justify-between pb-[12px] ${bgColor}`}>
       <p>{task.input}</p>
 
       {task.taskStatus === 'Complete' ? (
@@ -75,19 +73,9 @@ function Task({ tasks, setTasks, task }) {
 }
 
 function TaskDisplay({ tasks, setTasks }) {
-  //const [sortedTasks, setSortedTasks] = useState();
   const [display, setDisplay] = useState('All');
 
   console.log(tasks);
-  //console.log(sortedTasks);
-
-  /*function handleSort(e) {
-    e.target.value === 'All' && setSortedTasks(tasks);
-    e.target.value === 'Complete' &&
-      setSortedTasks(tasks.filter((task) => task.taskStatus === 'Complete'));
-    e.target.value === 'Open' &&
-      setSortedTasks(tasks.filter((task) => task.taskStatus === 'Open'));
-  }*/
 
   function handleComplete(tasks) {
     setDisplay('Complete');
@@ -123,13 +111,7 @@ function TaskDisplay({ tasks, setTasks }) {
           All Tasks
         </button>
       </div>
-      {/*<form>
-        <select value={'All'} onChange={handleSort}>
-          <option name="All">All</option>
-          <option name="Complete">Complete</option>
-          <option name="Open">Open</option>
-        </select>
-      </form>*/}
+
       <ul>
         {display === 'All' &&
           tasks.map((task) => (
